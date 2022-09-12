@@ -1,0 +1,97 @@
+//Una matriz mágica es una matriz cuadrada (tiene igual número de filas que de columnas)
+//que tiene como propiedad especial que la suma de las filas, las columnas y las
+//diagonales es igual. Por ejemplo:
+//	2 7 6
+//	9 5 1
+//	4 3 8
+//	En la matriz de ejemplo las sumas son siempre 15. Considere el problema de construir
+//	un algoritmo que compruebe si una matriz de datos enteros es mágica o no, y en caso
+//	de que sea mágica escribir la suma. Además, el programa deberá comprobar que los
+//	números introducidos son correctos, es decir, están entre el 1 y el 9. El usuario ingresa el
+//	tamaño de la matriz que no debe superar orden igual a 10
+
+Proceso sin_titulo
+	definir cantidad,sumafila,sumacolumna,sumadiagonal,sumaValores,resultado,filas,columnas Como Entero
+	escribir "Ingrese cantidad de filas/columas "
+	leer cantidad
+	si cantidad < 2 o cantidad > 10 Entonces
+		escribir "El orden de la matriz no debe superar 10 "
+	SiNo
+		filas = cantidad
+		columnas = cantidad
+		dimension matriz(filas,columnas)
+		definir matriz Como enteros
+		
+		Para i = 0 Hasta filas-1 Con Paso 1 Hacer
+			Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+				Repetir
+					leer matriz(i,j)					
+				Hasta Que matriz(i,j) >= 1 y matriz(i,j) <= 9
+			Fin Para
+		Fin Para
+	FinSi	
+	resultado = 1
+	
+	sumaValores = 0
+	Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+		sumaValores = sumaValores + matriz(0,j)
+	Fin Para
+	
+	Para i = 0 Hasta filas-1 Con Paso 1 Hacer
+		sumafila = 0
+		Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+			sumafila = sumafila + matriz(i,j)
+		Fin Para
+		si sumafila <> sumaValores Entonces
+			resultado = 0
+		FinSi
+	Fin Para
+	
+	Para i = 0 Hasta filas-1 Con Paso 1 Hacer
+		sumacolumna = 0
+		Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+			sumacolumna = sumacolumna + matriz(j,i)
+			escribir matriz(j,i)
+		Fin Para
+		si sumacolumna <> sumaValores Entonces
+			resultado = 0
+		FinSi
+	Fin Para
+	
+    sumadiagonal = 0
+	Para i = 0 Hasta filas-1 Con Paso 1 Hacer
+		Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+			si i = j Entonces
+				sumadiagonal = sumadiagonal + matriz(i,j)
+			FinSi
+		FinPara
+	FinPara
+	si sumadiagonal <> sumavalores Entonces
+		resultado = 0
+	FinSi
+	
+    sumadiagonal = 0
+	Para i = 0 Hasta filas-1 Con Paso 1 Hacer
+		Para j = 0 Hasta columnas-1 Con Paso 1 Hacer
+			si i = j Entonces
+				sumadiagonal = sumadiagonal + matriz(j,i)
+			FinSi
+		FinPara
+	FinPara
+	si sumadiagonal <> sumavalores Entonces
+		resultado = 0
+	FinSi
+		
+	Para i = 0 Hasta 2 Con Paso 1 Hacer
+		Para j = 0 Hasta 2 Con Paso 1 Hacer
+			escribir Sin Saltar matriz(i,j) "     "
+		Fin Para
+		escribir " "
+	Fin Para	
+	si resultado = 1 Entonces
+		escribir "LA MATRIZ ES MAGICA"
+	sino
+		escribir "LA MATRIZ NO ES MAGICA"
+	FinSi
+FinProceso
+
